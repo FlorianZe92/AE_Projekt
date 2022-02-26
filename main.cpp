@@ -857,7 +857,7 @@ vector<float> get_values(vector<float> x_value,vector<float> y_value, int size){
     
     float pear_fac = 0;
 
-#pragma omp for
+#pragma omp simd reduction(+ : pear_fac)
     for (int i = 0; i < size; ++i){
         pear_fac+=(x_value[i]-mean_x)*(y_value[i]-mean_y);
     }
@@ -878,7 +878,6 @@ bool is_error_still_ok(vector<float> x_start, vector<float> y_start, vector<floa
     for (int i = 0; i<5;++i){
         err += abs(floor(values_start[i]*pow(10, de)) - floor(values_per[i]*pow(10, de)));
     }
-    //std::cout << err << ' ';
     bool bool_err = false;
 
     if (err == 0){
