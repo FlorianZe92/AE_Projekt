@@ -1,0 +1,36 @@
+main_graph.cpp wurde folgendermaßen kompiliert:
+g++ -Ofast -std=c++11 -march=native main_graph.cpp -o same_stats_graph
+
+Zur Ausführung des Programmes wird dann folgender Befehl benötigt:
+./same_stats_graph [Start] [Ziel] [Iterationen]
+
+Für den Start sind möglich:
+dino
+angled_blob
+less_angled_blob
+random_cloud
+slanted_less
+
+Für das Ziel sind möglich:
+circle
+bullseye
+dots
+x
+h_lines
+v_lines
+wide_lines
+high_lines
+slant_up
+slant_down
+star
+
+Beispiel:
+./same_stats_graph dino x 10000
+
+Hierbei werden dann beim Ausführen zwei CSV Dateien (x.csv und y.csv) erstellt. Es wurden dabei 10.000 Iterationen durchgeführt.
+Als Output erhält man zudem die statistischen Eigenschaften der Start (Nach 0 Iterationen) und Endwerte (Nach 10.000 Iterationen), 
+welche auf zwei Nachkommastellen übereinstimmen.
+Die restlichen Nachkommastellen werden als abgeschnitten(abgerundet) im Algorithmus angenommen.
+
+Die ausgegebenen CSV Dateien können dann in ein Bild umgewandelt werden, in dem der Python Code graph_code.py
+genutzt wird. Zur Bildumwandlung wird dann in Anaconda folgendes eingegeben: python graph_code.py

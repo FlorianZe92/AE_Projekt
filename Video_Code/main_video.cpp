@@ -22,7 +22,7 @@ using namespace std;
 
 //Die veränderten Punkte werden hierbei in eine CSV gespeichert, diese können dann z.B. mittels Matplotlib graphisch dargestellt werden
 void write_csv(std::string filename, std::vector<float> vals){
-    std::ofstream myFile("../Output/" + filename);
+    std::ofstream myFile("Output/" + filename);
     for(int i = 0; i < vals.size(); ++i)
     {
         myFile << vals.at(i) << "\n";
@@ -891,13 +891,11 @@ bool is_error_still_ok(vector<float> x_start, vector<float> y_start, vector<floa
 void print_values(vector<float> x_start, vector<float> y_start, vector<float> per_x, vector<float> per_y, int size){
     vector<float> values_start = get_values(x_start,y_start,size);
     vector<float> values_per = get_values(per_x,per_y,size); 
-
-    for (int i = 0; i<5;++i){
-         std::cout << values_start[i] << ' ';
-         std::cout << values_per[i] << ' ';
-         std::cout << std::endl;
-    }
-
+    std::cout << "x_mean_start:" << ' ' << values_start[0] << std::endl << "x_mean_end:" << ' ' << values_per[0] << std::endl << std::endl;
+    std::cout << "y_mean_start:" << ' ' << values_start[1] << std::endl << "y_mean_end:" << ' ' << values_per[1] << std::endl << std::endl;
+    std::cout << "x_std_start:" << ' ' << values_start[2] << std::endl << "x_std_end:" << ' ' << values_per[2] << std::endl << std::endl;
+    std::cout << "y_std_start:" << ' ' << values_start[3] << std::endl << "y_std_end:" << ' ' << values_per[3] << std::endl << std::endl;
+    std::cout << "corr_start:" << ' ' << values_start[4] << std::endl << "corr_end:" << ' ' << values_per[4] << std::endl << std::endl;
 }
 
 //Innerhalb dieser Funktion wird die "perturb" Funktion insgesamt "it" mal aufgerufen
@@ -912,8 +910,6 @@ void run_pattern(vector<float> x_start, vector<float> y_start, string target, in
     vector<float> x_check = x_start;
     vector<float> y_check = y_start;
 
-
-    auto start_time = system_clock::now();
     for (int i = 1; i < (it+1); i++) {
         float s_cu_par = (it-i)/it;
         float s_cu = s_curve(s_cu_par);
@@ -941,12 +937,6 @@ void run_pattern(vector<float> x_start, vector<float> y_start, string target, in
         //}
     }
 
-    auto end_time = system_clock::now();
-	double time = duration<double>(end_time - start_time).count();
-    std::cout << std::endl;
-    std::cout << time << ' ';
-    std::cout << std::endl;
-
     //////////////////////////////////
     // Manual Check of stat. Values //
     //////////////////////////////////
@@ -966,12 +956,11 @@ void run_pattern(vector<float> x_start, vector<float> y_start, string target, in
 
 
 int main(int argc, char** argv){
-    //string shape_start = argv[1];
-    //string shape_end = argv[2];
-    //int it = atoi(argv[3]);
+    string shape_start = argv[1];
+    string shape_end = argv[2];
+    int it_range = atoi(argv[3]);
+    int it_step_number = atoi(argv[4]);
 
-    string shape_start = "dino";
-    string shape_end = "circle";
     vector<float> x;
     vector<float> y;
 
@@ -1007,13 +996,13 @@ int main(int argc, char** argv){
         y = read_csv("y_slanted_less.csv");
     }
 
-    //int it = 500000;
     int de = 2;
     int size = x.size();
 
-    for(int i = 1; i < 2; ++i)
+    // Hier werden dann it_step_number viele CSV's erzeugt, welche sich jeweils um it_range Iterationen im Fortschritt des Algorithmus unterscheiden
+    for(int i = 1; i < it_step_number; ++i)
     {
-        int it = i*100000;
+        int it = i*it_range;
         run_pattern(x,y,shape_end,it,de,size);
     }   
 }

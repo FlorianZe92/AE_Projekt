@@ -1,0 +1,38 @@
+main_video.cpp wurde folgendermaßen kompiliert:
+g++ -Ofast -std=c++11 -march=native main_video.cpp -o same_stats_video
+
+Zur Ausführung des Programmes wird dann folgender Befehl benötigt:
+./same_stats_video [Start] [Ziel] [Schrittweite] [Anzahl von Schritten]
+
+Für den Start sind möglich:
+dino
+angled_blob
+less_angled_blob
+random_cloud
+slanted_less
+
+Für das Ziel sind möglich:
+circle
+bullseye
+dots
+x
+h_lines
+v_lines
+wide_lines
+high_lines
+slant_up
+slant_down
+star
+
+Beispiel:
+./same_stats_video dino x 1000 20
+
+Hierbei beträgt die Schrittweite nun 1000 Iterationen. Das heißt, dass alle 1000 Iterationen zwei CSV Dateien
+erstellt werden (mit entsprechender Benennung). Dies erfolgt dann genau 20 mal (Anzahl von Schritten).
+
+Anschließend wird der Python Code video_code.py genutzt um entstandenen CSVs zu visualisieren
+Hierbei wird dann folgendes in Anaconda eingegeben: python video_code.py 1000 20
+(Es werden somit die gleichen Parameter übergeben wie zuvor an das C++ Programm)
+
+Hierbei werden dann zu den jeweiligen CSVs die zugehörigen Bilder in dem Ordner Output erstellt und darauf
+basierend wird dann ein Video erstellt, das dann im Ordner Video_Code erscheint.
