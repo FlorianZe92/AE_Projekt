@@ -1,9 +1,9 @@
 # AE_Projekt
 
--projekt mit code und ausarbeitung im paper format
+Thematik:
+Generieren eines 2D Datensatzes mit gleichen statistischen Eigenschaften
+und einer vorgegebenen Form
 
--Thema: Generating 2D Datasets With Similar Statistical Properties = Generieren eines 2D Datensatzes mit gleichen statistischen Eigenschaften
-
--auf deutsch oder englisch
-
--TODO: text zu einzelnen kapiteln schreiben
+Was ist hier zu finden:
+Darstellung der Ergebnisse als einzelnes Bild (Graph_Code)
+Darstellung der Ergebnisse als Video (Video_Code)
