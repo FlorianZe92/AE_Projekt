@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(graph_code)
+project(same_stats_graph)
 set(CMAKE_CXX_STANDARD 17)
 set(SOURCE_FILES main_graph.cpp)
 
@@ -7,4 +7,4 @@ set(SOURCE_FILES main_graph.cpp)
 set(CMAKE_CXX_FLAGS "-Ofast -std=c++11 -fopenmp -march=native")
 
 # create executable with name pi
-add_executable(graph_code ${SOURCE_FILES})
+add_executable(same_stats_graph ${SOURCE_FILES})

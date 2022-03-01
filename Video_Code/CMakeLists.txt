@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(video_code)
+project(same_stats_video)
 set(CMAKE_CXX_STANDARD 17)
 set(SOURCE_FILES main_video.cpp)
 
@@ -7,4 +7,4 @@ set(SOURCE_FILES main_video.cpp)
 set(CMAKE_CXX_FLAGS "-Ofast -std=c++11 -fopenmp -march=native")
 
 # create executable with name pi
-add_executable(video_code ${SOURCE_FILES})
+add_executable(same_stats_video ${SOURCE_FILES})
